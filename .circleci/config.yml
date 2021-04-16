@@ -6,7 +6,6 @@ orbs:
 workflows:
   maven_test:
     jobs:
-      steps:
-        - maven/test
-        - mvn package
-        - mv /target/*.war $CIRCLE_ARTIFCATS/         
+      - maven/test
+#     - mvn package
+#     - mv /target/*.war $CIRCLE_ARTIFCATS/         
