@@ -1,0 +1,8 @@
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: ashishmathai/mvnalpine:0.1
+  
+    steps:
+      - run: mvn echo "HELLO WORLD"
