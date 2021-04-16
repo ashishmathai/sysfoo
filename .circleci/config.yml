@@ -1,9 +1,8 @@
 version: 2.1
-
-orbs:
-  maven: circleci/maven@1.1
-
-workflows:
-  maven_test:
-    jobs:
-      - maven/test
+jobs:
+  build:
+    - image: ashishmathai/mvnalpine:0.1
+  
+  steps:
+    - run: mvn package
+    - run: mv target/*.war $CIRCLE_ARTIFACTS
