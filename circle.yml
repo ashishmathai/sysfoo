@@ -1,6 +1,8 @@
---- 
-test: 
-  override: 
-    - "mvn package"
-  post: 
-    - "mv target/*.war $CIRCLE_ARTIFACTS/"
+jobs:
+  test:
+    steps: 
+      - run: mvn package
+    
+    post:
+      steps:
+        - mv target/*.war $CIRCLE_ARTIFACTS/
