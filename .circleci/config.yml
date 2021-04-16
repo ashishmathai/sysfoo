@@ -2,7 +2,10 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: ashishmathai/mvnalpine:0.1
+      - image: apline
   
     steps:
-      - run: mvn echo "HELLO WORLD"
+      - run: apk update
+      - run: apk add openjdk8      
+      - run: apk add maven
+      - run: echo "HELLO WORLD"
