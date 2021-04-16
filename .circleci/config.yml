@@ -1,10 +1,10 @@
 version: 2.0
-
 jobs:
   test:
     docker:
       - image: ashishmathai/mvnalpine:0.1
      
     steps:
-      - run: mvn package
-      - run: mv /target/*.war $CIRCLE_ARTIFCATS/         
+      run: 
+        - mvn package
+        - mv /target/*.war $CIRCLE_ARTIFCATS/         
