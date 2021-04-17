@@ -10,16 +10,16 @@ jobs:
     steps:
       - checkout
       - run: mvn package
-        #- run: sudo target/*.war $CIRCLE_ARTIFACTS/
+      - run: mv target/*.war $CIRCLE_ARTIFACTS/
     
-    working_directory: /tmp
-    steps:
-      - run:
-          name: Creating Dummy Artifacts
-          command: |
-            mkdir /tmp/artifact
-      - store_artifacts:
-          path: /tmp/artifact
+        #    working_directory: /tmp
+        #    steps:
+        #      - run:
+        #          name: Creating Dummy Artifacts
+        #          command: |
+        #            mkdir /tmp/artifact
+        #      - store_artifacts:
+        #          path: /tmp/artifact
 
 #    general:
 #      artifacts:
