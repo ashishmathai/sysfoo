@@ -3,22 +3,21 @@ jobs:
   builds:
     docker:
       - image: circleci/@maven:0.1
-    
+
     working_directory: ~/repo
     environment:
-      MAVEN_OPTS: -Xmx3200m
-	
+      MAVEN_OPTS: -Xmx3200m	
+
     steps:
       - checkout
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum  "pom.xml" }}
 	    - v1-dependencies-
-			
+
       - run: mvn dependency:go-offline
       - save_cache:
           paths:
 	    - ~/.m2
 	  keys: v1-dependencires-{{ checksum "pom.xml" }}
-      - run:  mvn integration-test
-	
+      - run:  mvn integration-test	
