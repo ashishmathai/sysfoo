@@ -1,29 +1,24 @@
-version: 2.0
-
+version: 2
 jobs:
-  build:
+  builds:
     docker:
-      - image: ashishmathai/maven-alpine:0.1
-        auth:
-          username: ashishmathai
-          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
+      - image: circleci/@maven:0.1
+    
+    working_directory: ~/repo
+    environment:
+      MAVEN_OPTS: -Xmx3200m
+	
     steps:
       - checkout
-      - run: mvn package
-      - run: mv target/*.war /tmp/artifacts
-        #- run: mkdir -p /tmp/artifacts
-      - store_artifacts:
-          path: /tmp/artifacts
-    
-        #    working_directory: /tmp
-        #    steps:
-        #      - run:
-        #          name: Creating Dummy Artifacts
-        #          command: |
-        #            mkdir /tmp/artifact
-        #      - store_artifacts:
-        #          path: /tmp/artifact
-
-#    general:
-#      artifacts:
-#        - "target/*.war"
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum  "pom.xml" }}
+	    - v1-dependencies-
+			
+      - run: mvn dependency:go-offline
+      - save_cache:
+          paths:
+	    - ~/.m2
+	  keys: v1-dependencires-{{ checksum "pom.xml" }}
+      - run:  mvn integration-test
+	
