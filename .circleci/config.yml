@@ -9,5 +9,5 @@ jobs:
           password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
     steps:
       - checkout
-      - run: ./mvnw package
-      - run:  target/*.war $CIRCLE_ARTIFACTS/
+      - run: mvn package
+      - run: target/*.war $CIRCLE_ARTIFACTS/
