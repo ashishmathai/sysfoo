@@ -1,0 +1,17 @@
+version: 2.0
+
+jobs:
+  build:
+    docker:
+      - image: ashishmathai/maven-alpine:0.1
+        auth:
+          username: ashishmathai
+          password: $DOCKERHUB_PASSWORD  
+    steps:
+      - checkout
+      - run: mvn package
+      - run: mkdir -p /tmp/artifacts
+      - run: mv target/*.war /tmp/artifacts/
+      - store_artifacts:
+          path: /tmp/artifacts/
+
