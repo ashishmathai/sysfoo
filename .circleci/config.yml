@@ -1,11 +1,13 @@
-version: 2.1
+version: 2.0
+
 jobs:
   build:
     docker:
-      - image: alpine
-  
+      - image: ashishmathai/mvnalpine:0.1
+        auth:
+          username: ashishmathai
+          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
     steps:
-      - run: apk update
-      - run: apk add openjdk8      
-      - run: apk add maven
-      - run: echo "HELLO WORLD"
+      - checkout
+      - run: ./mvnw package
+      - run:  target/*.war $CIRCLE_ARTIFACTS/
