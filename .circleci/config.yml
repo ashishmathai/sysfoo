@@ -13,11 +13,11 @@ jobs:
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum  "pom.xml" }}
-	    - v1-dependencies-
+            - v1-dependencies-
 
       - run: mvn dependency:go-offline
       - save_cache:
           paths:
-	    - ~/.m2
-	  keys: v1-dependencires-{{ checksum "pom.xml" }}
+            - ~/.m2
+          keys: v1-dependencires-{{ checksum "pom.xml" }}
       - run:  mvn integration-test	
