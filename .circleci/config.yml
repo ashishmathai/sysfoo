@@ -10,4 +10,8 @@ jobs:
     steps:
       - checkout
       - run: mvn package
-      - run: sudo target/*.war $CIRCLE_ARTIFACTS/
+        #- run: sudo target/*.war $CIRCLE_ARTIFACTS/
+
+    general:
+      artifacts:
+        - "target/*.war"
