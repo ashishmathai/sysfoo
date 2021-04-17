@@ -11,7 +11,7 @@ jobs:
       - checkout
       - run: mvn package
       - run: mv target/*.war /tmp/artifacts
-      - run: mkdir -p /tmp/artifacts
+        #- run: mkdir -p /tmp/artifacts
       - store_artifacts:
           path: /tmp/artifacts
     
