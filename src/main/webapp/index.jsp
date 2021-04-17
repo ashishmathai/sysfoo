@@ -61,7 +61,7 @@
 
 				<!-- Footer -->
 					<footer id="footer">
-						<p class="copyright">&copycopyrights; Designed by Motorrad @2021</a>.</p>
+						<p class="copyright">&copycopyrights; Designed by Motorrad @2021-2022</a>.</p>
 					</footer>
 
 			</div>
