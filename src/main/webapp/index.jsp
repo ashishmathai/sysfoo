@@ -23,7 +23,7 @@
 						<div>
 						<nav>
 								<ul class="actions">
-										<li><a  class="button special">Sysfoo</a></li>
+										<li><a  class="button special">Motorrad</a></li>
 									</ul>
 
 						</nav>
