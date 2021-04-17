@@ -11,8 +11,3 @@ jobs:
       - run: mv target/*.war /tmp/artifacts/
       - store_artifacts:
           path: /tmp/artifacts/	  
-
-workflows:
-  maven_test:
-  jobs:
-    - build
